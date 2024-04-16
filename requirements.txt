@@ -1,0 +1,14 @@
+torch
+torchvision
+torchaudio
+matplotlib
+scipy
+lmdb
+pyarrow
+termcolor
+librosa
+loguru
+IPython
+umap
+wandb
+transformers
