@@ -1,4 +1,4 @@
-## For 50+ FPS on A100
+# For 50+ FPS on A100
 PYTHONPATH="$(dirname $0)/..":$PYTHONPATH \
 OMP_NUM_THREADS=10 CUDA_VISIBLE_DEVICES=0 python -u runner.py \
     --dataset_name talkshow \
@@ -12,7 +12,7 @@ OMP_NUM_THREADS=10 CUDA_VISIBLE_DEVICES=0 python -u runner.py \
     --timestep_respacing ddim25 \
     --overlap_len 10 \
     --mode test_custom_audio \
-    --test_audio_path audios/Forrest.wav
+    --test_audio_path audios/Forrest_tts.wav
 
 
 ## For 120+ FPS on A100
@@ -30,4 +30,4 @@ OMP_NUM_THREADS=10 CUDA_VISIBLE_DEVICES=0 python -u runner.py \
 #     --overlap_len 10 \
 #     --mode test_custom_audio \
 #     --jump_n_sample 2 \
-#     --test_audio_path audios/Forrest.wav
+#     --test_audio_path audios/Forrest_tts.wav

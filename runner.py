@@ -7,7 +7,7 @@ from options.train_options import TrainCompOptions
 # from utils.plot_script import *
 
 from models import MotionTransformer, UniDiffuser
-from trainers import DDPMTrainer_beat, DDPMTrainer_talkshow
+from trainers import DDPMTrainer_beat, DDPMTrainer_show
 from datasets import ShowDataset
 
 from mmcv.runner import get_dist_info, init_dist
@@ -291,7 +291,7 @@ def main_worker(gpu_id, ngpus_per_node, opt):
     if opt.dataset_name == 'beat':
         runner = DDPMTrainer_beat(opt, model, eval_model=eval_model)
     elif opt.dataset_name == 'talkshow':
-        runner = DDPMTrainer_talkshow(opt, model, eval_model=eval_model)
+        runner = DDPMTrainer_show(opt, model, eval_model=eval_model)
     else:
         runner = DDPMTrainer(opt, model)
 
@@ -309,20 +309,10 @@ def main_worker(gpu_id, ngpus_per_node, opt):
 
     elif "test" in opt.mode:
         if opt.dataset_name.lower() == 'beat':
-            if opt.test_on_trainset:
-                test_dataset = __import__(f"datasets.{opt.dataset_name}", fromlist=["something"]).BeatDataset(opt, "train")
-            elif opt.test_on_val:
-                test_dataset = __import__(f"datasets.{opt.dataset_name}", fromlist=["something"]).BeatDataset(opt, "val")
-            else:
-                test_dataset = __import__(f"datasets.{opt.dataset_name}", fromlist=["something"]).BeatDataset(opt, "test")
+            test_dataset = __import__(f"datasets.{opt.dataset_name}", fromlist=["something"]).BeatDataset(opt, "test")
 
         elif opt.dataset_name.lower() == 'talkshow':
-            if opt.test_on_trainset:
-                test_dataset = ShowDataset(opt, 'data/SHOW/cached_data/talkshow_train_cache')
-            elif opt.test_on_val:
-                test_dataset = ShowDataset(opt, 'data/SHOW/cached_data/talkshow_val_cache')
-            else:
-                test_dataset = ShowDataset(opt, 'data/SHOW/cached_data/talkshow_test_cache')
+            test_dataset = ShowDataset(opt, 'data/SHOW/cached_data/talkshow_test_cache')
                 
         if opt.mode == "test":
             results_dir = runner.test(test_dataset)

@@ -1,5 +1,5 @@
 from .ddpm_beat_trainer import DDPMTrainer_beat
-from .ddpm_talkshow_trainer import DDPMTrainer_talkshow
+from .ddpm_show_trainer import DDPMTrainer_show
 
 
-__all__ = ['DDPMTrainer_beat', 'DDPMTrainer_talkshow']
+__all__ = ['DDPMTrainer_beat', 'DDPMTrainer_show']

@@ -1,4 +1,4 @@
-## for 25+ FPS on A100
+## For 25+ FPS on A100
 # PYTHONPATH="$(dirname $0)/..":$PYTHONPATH \
 # OMP_NUM_THREADS=10 CUDA_VISIBLE_DEVICES=0 python -u runner.py \
 #     --dataset_name beat \
@@ -10,7 +10,7 @@
 #     --timestep_respacing ddim25 \
 #     --overlap_len 4 \
 #     --mode test_custom_audio \
-#     --test_audio_path audios/Forrest.wav
+#     --test_audio_path audios/2_scott_0_3_3.wav
 
 ## For 30+ FPS on 3090; For 55+ FPS on A100
 PYTHONPATH="$(dirname $0)/..":$PYTHONPATH \
@@ -25,6 +25,4 @@ OMP_NUM_THREADS=10 CUDA_VISIBLE_DEVICES=0 python -u runner.py \
     --overlap_len 4 \
     --mode test_custom_audio \
     --jump_n_sample 2 \
-    --test_audio_path audios/Forrest.wav
-
- 
+    --test_audio_path audios/2_scott_0_3_3.wav

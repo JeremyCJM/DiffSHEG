@@ -37,7 +37,7 @@ import datasets.rotation_converter as rot_cvt
 from .loss_factory import get_loss_func
 
 
-class DDPMTrainer_talkshow(object):
+class DDPMTrainer_show(object):
 
     def __init__(self, args, encoder, eval_model=None):
         self.opt = args
