@@ -4,7 +4,7 @@ import os
 import pickle
 import lmdb
 import pyarrow
-import fasttext
+# import fasttext
 from loguru import logger
 from scipy import linalg
 from .pymo.parsers import BVHParser

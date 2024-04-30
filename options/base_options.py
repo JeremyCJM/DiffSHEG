@@ -105,7 +105,7 @@ class BaseOptions():
         # classifier-free guidance
         self.parser.add_argument('--classifier_free', action="store_true", help='Use classifier-free guidance')
         self.parser.add_argument('--null_cond_prob', type=float, default=0.2, help='Probability of null condition during classifier-free training')
-        self.parser.add_argument('--cond_scale', type=float, default=2.0, help='Scale of the condition in classifier-free guidance sampling')
+        self.parser.add_argument('--cond_scale', type=float, default=1.0, help='Scale of the condition in classifier-free guidance sampling')
 
         # Try Expression ID off
         self.parser.add_argument('--ExprID_off', action="store_true", help='Turn off the expression ID condition')

@@ -18,6 +18,7 @@ from sklearn.preprocessing import normalize
 import librosa 
 import datasets.rotation_converter as rot_cvt
 import torch.nn.functional as F
+import pickle
 
 
 class BeatDataset(Dataset):

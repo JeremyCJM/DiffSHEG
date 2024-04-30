@@ -120,8 +120,8 @@ def main_worker(gpu_id, ngpus_per_node, opt):
     os.makedirs(opt.meta_dir, exist_ok=True)
     if opt.world_size > 1:
         dist.barrier()
-            
-    elif opt.dataset_name.lower() == 'beat':
+        
+    if opt.dataset_name.lower() == 'beat':
         opt.data_root = 'data/BEAT'
         opt.fps = 15
         opt.net_dim_pose = 192 # body: [16, 34, 141], expression: [16, 34, 51], in_audio: [16, 36266]
@@ -249,7 +249,7 @@ def main_worker(gpu_id, ngpus_per_node, opt):
                 # ourselves based on the total number of GPUs of the current node.
                 opt.batch_size = int(opt.batch_size / ngpus_per_node)
                 opt.workers = int((opt.workers + ngpus_per_node - 1) / ngpus_per_node)
-                model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[opt.gpu_id], find_unused_parameters=True)
+                model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[opt.gpu_id], find_unused_parameters=False)
 
                 if not opt.no_fgd:
                     eval_model.cuda(opt.gpu_id)
